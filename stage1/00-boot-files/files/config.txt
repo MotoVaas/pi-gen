@@ -53,8 +53,18 @@
 
 # Additional overlays and parameters are documented /boot/overlays/README
 
-# Enable audio (loads snd_bcm2835)
-dtparam=audio=on
+# disable audio (loads snd_bcm2835)
+dtparam=audio=off
+# enable camera
+start_x=1
+# Set GPU memory
+gpu_mem=256
+# Set camera driver to falling edge Sync output
+disable_camera_led=3
+# enable UART
+enable_uart=1
+#i2C pullups
+gpio=44-45=ip
 
 [pi4]
 # Enable DRM VC4 V3D driver on top of the dispmanx display stack
