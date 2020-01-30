@@ -144,7 +144,7 @@ do
 done
 
 export PI_GEN=${PI_GEN:-pi-gen}
-export PI_GEN_REPO=${PI_GEN_REPO:-https://github.com/RPi-Distro/pi-gen}
+export PI_GEN_REPO=${PI_GEN_REPO:-https://github.com/MotoVaas/pi-gen}
 
 if [ -z "${IMG_NAME}" ]; then
 	echo "IMG_NAME not set" 1>&2
@@ -162,21 +162,18 @@ export DEPLOY_DIR=${DEPLOY_DIR:-"${BASE_DIR}/deploy"}
 export DEPLOY_ZIP="${DEPLOY_ZIP:-1}"
 export LOG_FILE="${WORK_DIR}/build.log"
 
-export TARGET_HOSTNAME=${TARGET_HOSTNAME:-raspberrypi}
+export TARGET_HOSTNAME=${TARGET_HOSTNAME:-Reaper123456789}
 
-export FIRST_USER_NAME=${FIRST_USER_NAME:-pi}
-export FIRST_USER_PASS=${FIRST_USER_PASS:-raspberry}
-export WPA_ESSID
-export WPA_PASSWORD
-export WPA_COUNTRY
-export ENABLE_SSH="${ENABLE_SSH:-0}"
+export FIRST_USER_NAME=${FIRST_USER_NAME:-Vaasroot}
+export FIRST_USER_PASS=${FIRST_USER_PASS:-123456789}
+export ENABLE_SSH="${ENABLE_SSH:-1}"
 
-export LOCALE_DEFAULT="${LOCALE_DEFAULT:-en_GB.UTF-8}"
+export LOCALE_DEFAULT="${LOCALE_DEFAULT:-en_US.UTF-8}"
 
-export KEYBOARD_KEYMAP="${KEYBOARD_KEYMAP:-gb}"
-export KEYBOARD_LAYOUT="${KEYBOARD_LAYOUT:-English (UK)}"
+export KEYBOARD_KEYMAP="${KEYBOARD_KEYMAP:-us}"
+export KEYBOARD_LAYOUT="${KEYBOARD_LAYOUT:-English (US)}"
 
-export TIMEZONE_DEFAULT="${TIMEZONE_DEFAULT:-Europe/London}"
+export TIMEZONE_DEFAULT="${TIMEZONE_DEFAULT:-America/Los_Angeles}"
 
 export GIT_HASH=${GIT_HASH:-"$(git rev-parse HEAD)"}
 
@@ -217,11 +214,6 @@ fi
 
 if [[ -n "${APT_PROXY}" ]] && ! curl --silent "${APT_PROXY}" >/dev/null ; then
 	echo "Could not reach APT_PROXY server: ${APT_PROXY}"
-	exit 1
-fi
-
-if [[ -n "${WPA_PASSWORD}" && ${#WPA_PASSWORD} -lt 8 || ${#WPA_PASSWORD} -gt 63  ]] ; then
-	echo "WPA_PASSWORD" must be between 8 and 63 characters
 	exit 1
 fi
 
